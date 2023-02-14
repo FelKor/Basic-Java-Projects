@@ -19,21 +19,21 @@ public class Taschenrechner extends JFrame implements ActionListener {
     boolean changeinputString = false, inputtingcurrentNumbers = true;
 
     JButton number0Button, number1Button, number2Button, number3Button, number4Button,
-            number5Button,number6Button, number7Button, number8Button, number9Button;
-    JButton addButton, subtractButton, multiplyButton, divideButton, clearButton, equalsButton; //dotButton
-    
+            number5Button, number6Button, number7Button, number8Button, number9Button;
+    JButton addButton, subtractButton, multiplyButton, divideButton, clearButton, equalsButton; // dotButton
+
     JPanel numpadPanel;
 
     JTextField currentNumbersField, sumField;
     Box outputBox, outputBoxleft, outputBoxright;
 
-    //Konstruktor
-    public Taschenrechner(){
+    // Konstruktor
+    public Taschenrechner() {
         setTitle("Taschenrechner");
         setLayout(new BorderLayout());
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-        //number
+        // number
         number0Button = new JButton("0");
         number0Button.addActionListener(this);
         number0Button.setActionCommand("0");
@@ -65,41 +65,52 @@ public class Taschenrechner extends JFrame implements ActionListener {
         number9Button.addActionListener(this);
         number9Button.setActionCommand("9");
 
-        //operators
-        addButton       = new JButton("+");
+        // operators
+        addButton = new JButton("+");
         addButton.addActionListener(this);
         addButton.setActionCommand("+");
-        subtractButton  = new JButton("-");
+        subtractButton = new JButton("-");
         subtractButton.addActionListener(this);
         subtractButton.setActionCommand("-");
-        multiplyButton  = new JButton("*");
+        multiplyButton = new JButton("*");
         multiplyButton.addActionListener(this);
         multiplyButton.setActionCommand("*");
-        divideButton    = new JButton("/");
+        divideButton = new JButton("/");
         divideButton.addActionListener(this);
         divideButton.setActionCommand("/");
-        clearButton     = new JButton("C");
+        clearButton = new JButton("C");
         clearButton.addActionListener(this);
         clearButton.setActionCommand("C");
-        //dotButton       = new JButton(".");
-        //dotButton.addActionListener(this);
-        //dotButton.setActionCommand(".");
-        equalsButton    = new JButton("=");
+        // dotButton = new JButton(".");
+        // dotButton.addActionListener(this);
+        // dotButton.setActionCommand(".");
+        equalsButton = new JButton("=");
         equalsButton.addActionListener(this);
         equalsButton.setActionCommand("=");
 
-        //numpad-Panel
+        // numpad-Panel
         numpadPanel = new JPanel();
         numpadPanel.setLayout(new GridLayout(4, 4));
 
-        numpadPanel.add(number7Button); numpadPanel.add(number8Button); numpadPanel.add(number9Button); numpadPanel.add(divideButton);
-        numpadPanel.add(number4Button); numpadPanel.add(number5Button); numpadPanel.add(number6Button); numpadPanel.add(multiplyButton);
-        numpadPanel.add(number1Button); numpadPanel.add(number2Button); numpadPanel.add(number3Button); numpadPanel.add(subtractButton);
-        numpadPanel.add(clearButton);   numpadPanel.add(number0Button); numpadPanel.add(equalsButton);  numpadPanel.add(addButton);
-        //numpadPanel.add(dotButton);
+        numpadPanel.add(number7Button);
+        numpadPanel.add(number8Button);
+        numpadPanel.add(number9Button);
+        numpadPanel.add(divideButton);
+        numpadPanel.add(number4Button);
+        numpadPanel.add(number5Button);
+        numpadPanel.add(number6Button);
+        numpadPanel.add(multiplyButton);
+        numpadPanel.add(number1Button);
+        numpadPanel.add(number2Button);
+        numpadPanel.add(number3Button);
+        numpadPanel.add(subtractButton);
+        numpadPanel.add(clearButton);
+        numpadPanel.add(number0Button);
+        numpadPanel.add(equalsButton);
+        numpadPanel.add(addButton);
+        // numpadPanel.add(dotButton);
 
-
-        //output-Box
+        // output-Box
         currentNumbersField = new JTextField(30);
         currentNumbersField.setEditable(false);
         sumField = new JTextField(30);
@@ -120,14 +131,14 @@ public class Taschenrechner extends JFrame implements ActionListener {
         outputBox.add(Box.createRigidArea(new Dimension(10, 1)));
         outputBox.add(outputBoxright);
 
-        //Frame
+        // Frame
         add(outputBox, BorderLayout.NORTH);
         add(numpadPanel, BorderLayout.CENTER);
 
     }
 
-    //Mthods
-    public void clear_method(){
+    // Mthods
+    public void clear_method() {
         inputString1 = "";
         inputString2 = "";
         operatorString = "";
@@ -137,148 +148,147 @@ public class Taschenrechner extends JFrame implements ActionListener {
         inputtingcurrentNumbers = true;
     }
 
-    public void equals_method(){
+    public void equals_method() {
         inputtingcurrentNumbers = false;
         num1 = Double.parseDouble(inputString1);
         num2 = Double.parseDouble(inputString2);
 
-        if(operatorString.equals("/")){
-            sum = num1/num2;
+        if (operatorString.equals("/")) {
+            sum = num1 / num2;
         }
-        if(operatorString.equals("*")){
-            sum = num1*num2;
+        if (operatorString.equals("*")) {
+            sum = num1 * num2;
         }
-        if(operatorString.equals("-")){
-            sum = num1-num2;
+        if (operatorString.equals("-")) {
+            sum = num1 - num2;
         }
-        if(operatorString.equals("+")){
-            sum = num1+num2;
+        if (operatorString.equals("+")) {
+            sum = num1 + num2;
         }
 
         sumString = sum + "";
     }
 
-    public void dooperatorString(ActionEvent e){
-        
-        if(e.getActionCommand().equals("/")){
+    public void dooperatorString(ActionEvent e) {
+
+        if (e.getActionCommand().equals("/")) {
             changeinputString = true;
             operatorString = "/";
         }
-        if(e.getActionCommand().equals("*")){
+        if (e.getActionCommand().equals("*")) {
             changeinputString = true;
             operatorString = "*";
         }
-        if(e.getActionCommand().equals("-")){
+        if (e.getActionCommand().equals("-")) {
             changeinputString = true;
             operatorString = "-";
         }
-        if(e.getActionCommand().equals("+")){
+        if (e.getActionCommand().equals("+")) {
             changeinputString = true;
             operatorString = "+";
         }
     }
 
-    public void doinputString1(ActionEvent e){
-        
-        if(e.getActionCommand().equals("0")){
+    public void doinputString1(ActionEvent e) {
+
+        if (e.getActionCommand().equals("0")) {
             inputString1 += "0";
         }
-        if(e.getActionCommand().equals("1")){
+        if (e.getActionCommand().equals("1")) {
             inputString1 += "1";
         }
-        if(e.getActionCommand().equals("2")){
+        if (e.getActionCommand().equals("2")) {
             inputString1 += "2";
         }
-        if(e.getActionCommand().equals("3")){
+        if (e.getActionCommand().equals("3")) {
             inputString1 += "3";
         }
-        if(e.getActionCommand().equals("4")){
+        if (e.getActionCommand().equals("4")) {
             inputString1 += "4";
         }
-        if(e.getActionCommand().equals("5")){
+        if (e.getActionCommand().equals("5")) {
             inputString1 += "5";
         }
-        if(e.getActionCommand().equals("6")){
+        if (e.getActionCommand().equals("6")) {
             inputString1 += "6";
         }
-        if(e.getActionCommand().equals("7")){
+        if (e.getActionCommand().equals("7")) {
             inputString1 += "7";
         }
-        if(e.getActionCommand().equals("8")){
+        if (e.getActionCommand().equals("8")) {
             inputString1 += "8";
         }
-        if(e.getActionCommand().equals("9")){
+        if (e.getActionCommand().equals("9")) {
             inputString1 += "9";
         }
     }
 
-    public void doinputString2(ActionEvent e){
-        if(e.getActionCommand().equals("0")){
+    public void doinputString2(ActionEvent e) {
+        if (e.getActionCommand().equals("0")) {
             inputString2 += "0";
         }
-        if(e.getActionCommand().equals("1")){
+        if (e.getActionCommand().equals("1")) {
             inputString2 += "1";
         }
-        if(e.getActionCommand().equals("2")){
+        if (e.getActionCommand().equals("2")) {
             inputString2 += "2";
         }
-        if(e.getActionCommand().equals("3")){
+        if (e.getActionCommand().equals("3")) {
             inputString2 += "3";
         }
-        if(e.getActionCommand().equals("4")){
+        if (e.getActionCommand().equals("4")) {
             inputString2 += "4";
         }
-        if(e.getActionCommand().equals("5")){
+        if (e.getActionCommand().equals("5")) {
             inputString2 += "5";
         }
-        if(e.getActionCommand().equals("6")){
+        if (e.getActionCommand().equals("6")) {
             inputString2 += "6";
         }
-        if(e.getActionCommand().equals("7")){
+        if (e.getActionCommand().equals("7")) {
             inputString2 += "7";
         }
-        if(e.getActionCommand().equals("8")){
+        if (e.getActionCommand().equals("8")) {
             inputString2 += "8";
         }
-        if(e.getActionCommand().equals("9")){
+        if (e.getActionCommand().equals("9")) {
             inputString2 += "9";
         }
     }
-    
-    //Programm ablauf
+
+    // Programm ablauf
     public void actionPerformed(ActionEvent e) {
-        
-        //Clear
-        if(e.getActionCommand().equals("C")){
+
+        // Clear
+        if (e.getActionCommand().equals("C")) {
             clear_method();
         }
 
-        //equals
-        if(!inputString1.isBlank() && !inputString2.isBlank() && !operatorString.isBlank()){
-            if(e.getActionCommand().equals("=")){
-                equals_method();   
+        // equals
+        if (!inputString1.isBlank() && !inputString2.isBlank() && !operatorString.isBlank()) {
+            if (e.getActionCommand().equals("=")) {
+                equals_method();
             }
         }
 
-        if(inputtingcurrentNumbers = true){
-            //operator-Strings
+        if (inputtingcurrentNumbers = true) {
+            // operator-Strings
             dooperatorString(e);
-    
-            //input-Strings
-            if(changeinputString == false){
-               doinputString1(e);
-            }
-            else if(changeinputString == true){
+
+            // input-Strings
+            if (changeinputString == false) {
+                doinputString1(e);
+            } else if (changeinputString == true) {
                 doinputString2(e);
             }
         }
 
-        currentNumbersField.setText( inputString1 + " " + operatorString + " " + inputString2);
+        currentNumbersField.setText(inputString1 + " " + operatorString + " " + inputString2);
         sumField.setText(sumString);
         repaint();
     }
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         Taschenrechner App = new Taschenrechner();
         App.setSize(500, 500);
         App.setVisible(true);

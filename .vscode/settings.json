@@ -1,8 +1,10 @@
 {
-    "java.project.sourcePaths": [
-        "EAN-check",
-        "TikTakToe",
-        "Taschenrechener",
-        "Stickman"
-    ]
+  "java.project.sourcePaths": [
+    "TikTakToe",
+    "Taschenrechener",
+    "Stickman",
+    "EAN-check",
+    "Taschenrechner"
+],
+  "editor.defaultFormatter": "redhat.java"
 }
